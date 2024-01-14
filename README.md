@@ -1,6 +1,6 @@
 # Set Up Subscription
 
-<a href="" target="_blank">
+<a href="https://subscription-set-up.vercel.app/" target="_blank">
   <img src="/public/assets/images/banner.png" alt="banner">
 </a> 
 <br> 
