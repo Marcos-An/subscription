@@ -7,7 +7,7 @@
 <br>  
 
 
-**Desafio**
+**Challenge**
   
 The challenge was proposed by [OfferingTree SBC](https://www.bycoders.co/](https://www.offeringtree.com/)) and its a NextJS application that configures subscription payments based upon the inputs entered
 in the form.
