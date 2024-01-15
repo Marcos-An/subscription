@@ -5,7 +5,7 @@ describe('Test permutation default text', () => {
 
   it('should show permutation to No Trial with never-ending subscription', () => {
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately and then $0.00 every 0 Months until they cancel.`
+      `Your customer will be charged $0.00 immediately and then $0.00 every 0 Month until they cancel.`
     )
   })
 
@@ -14,7 +14,7 @@ describe('Test permutation default text', () => {
     cy.get('[data-cy="trialFrequency_Days"]').click()
 
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately for their 0 Days trial, and then $0.00 every 0 Months until they cancel.`
+      `Your customer will be charged $0.00 immediately for their 0 Day trial, and then $0.00 every 0 Month until they cancel.`
     )
   })
 
@@ -26,7 +26,7 @@ describe('Test permutation default text', () => {
     cy.get('[data-cy="duration_Customize"]').click()
 
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately for their 0 Days trial, and then $0.00 every 0 Months, 0 times. The total amount paid will be $0.00.`
+      `Your customer will be charged $0.00 immediately for their 0 Day trial, and then $0.00 every 0 Month, 0 times. The total amount paid will be $0.00.`
     )
   })
 })
@@ -66,20 +66,20 @@ describe('Test permutation change text', () => {
     cy.get('[data-cy="trialFrequency_Days"]').click()
 
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately for their 0 Days trial, and then $0.00 every 0 Months until they cancel.`
+      `Your customer will be charged $0.00 immediately for their 0 Day trial, and then $0.00 every 0 Month until they cancel.`
     )
     cy.get('[data-cy="trialFrequency"]').click()
     cy.get('[data-cy="trialFrequency_Weeks"]').click()
 
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately for their 0 Weeks trial, and then $0.00 every 0 Months until they cancel.`
+      `Your customer will be charged $0.00 immediately for their 0 Week trial, and then $0.00 every 0 Month until they cancel.`
     )
     cy.get('[data-cy="trialFrequency"]').click()
     cy.get('[data-cy="trialFrequency_Months"]').click()
     cy.get('input[name="trialPeriod"]').type('12')
 
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately for their 12 Months trial, and then $0.00 every 0 Months until they cancel.`
+      `Your customer will be charged $0.00 immediately for their 12 Months trial, and then $0.00 every 0 Month until they cancel.`
     )
 
     cy.get('[data-cy="duration"]').click()
@@ -89,7 +89,7 @@ describe('Test permutation change text', () => {
     cy.get('input[name="billingCycles"]').type('12')
 
     cy.get('p').contains(
-      `Your customer will be charged $0.00 immediately for their 12 Months trial, and then $0.00 every 0 Months, 12 times. The total amount paid will be $0.00.`
+      `Your customer will be charged $0.00 immediately for their 12 Months trial, and then $0.00 every 0 Month, 12 times. The total amount paid will be $0.00.`
     )
   })
 })
