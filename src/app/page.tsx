@@ -12,6 +12,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useCallback } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { messageRules } from '@/common/utils/messageRules'
 
 export default function Home() {
   const formMethods = useForm<mainFormData>({
@@ -39,23 +40,18 @@ export default function Home() {
   const billingCycles = watch('billingCycles')
   const duration = watch('duration')
 
-  const getMessage = useCallback(() => {
-    if (
-      trialFrequency !== frequencyOptionsEnum.NONE &&
-      duration === durationOptionsEnum.NEVER_ENDS
-    ) {
-      return messages[messagesEnum.TRIAL_WITH_NEVER_ENDING]
+  const getMessage = useCallback((formValues: mainFormData) => {
+    var message = messages[messagesEnum.NO_TRIAL_WITH_NEVER_ENDING]
+
+    for (const rule of messageRules) {
+      if (rule.check(formValues)) {
+        message = rule.message
+        break
+      }
     }
 
-    if (
-      trialFrequency !== frequencyOptionsEnum.NONE &&
-      duration === durationOptionsEnum.CUSTOMIZE
-    ) {
-      return messages[messagesEnum.TRIAL_WITH_ENDING]
-    }
-
-    return messages[messagesEnum.NO_TRIAL_WITH_NEVER_ENDING]
-  }, [trialFrequency, duration])
+    return message
+  }, [])
 
   return (
     <main className="max-w-[800px] h-screen m-auto gap-10 flex flex-col justify-center items-center px-6">
@@ -68,7 +64,16 @@ export default function Home() {
       </FormProvider>
 
       <SubscriptionPreview
-        text={getMessage()}
+        text={getMessage({
+          initialPrice,
+          billingFrequency,
+          billingPeriod,
+          periodPayment,
+          trialPeriod,
+          trialFrequency,
+          billingCycles,
+          duration,
+        })}
         values={{
           initialPrice,
           billingFrequency,
